@@ -6,7 +6,6 @@ const sqlite3 = require("sqlite3").verbose()
 
 //middleware
 app.use(express.json());
-// CORS
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader(

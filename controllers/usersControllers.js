@@ -4,8 +4,13 @@ exports.getAllUsers = function (req, res) {
 	db.all("SELECT * FROM users", [], (err, rows) => {
 		if (err) {
 			res.status(500).json({ error: err.message })
-		} else {
-			res.json(rows)
+		}
+		{
+			const updatedRows = rows.map((user) => ({
+				...user,
+				profileImg: `https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}`,
+			}))
+			res.json(updatedRows)
 		}
 	})
 }
